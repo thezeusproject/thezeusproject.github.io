@@ -1,3 +1,4 @@
+<!-- `made by` https://cneuralnets.netlify.app/ -->
 ---
 title: Linear Regression
 subtitle: This is the most basic and overlooked in today's machine learning world, when we have advanced stuff, like transformers, RNNs and so much more. But in reality, if you dive deep into any kind of model, it will have linear regression in some form or the other!
