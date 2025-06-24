@@ -10,6 +10,12 @@ const blogs = [
     title: "Optimizers",
     subtitle: "A deep dive into the evolution of optimization algorithms in deep learning.",
     html: 'blog-pages/optimizer-theory.html'
+  },
+  {
+    id: "performance-metrics",
+    title: "Performance Metrics",
+    subtitle: "Performance metrics tell you if your model actually works.",
+    html: "blog-pages/performance-metrics.html",
   }
 ];
 
