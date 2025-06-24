@@ -39,6 +39,7 @@ At the beginning of your blog post file, you need to include a frontmatter secti
 Here is an example of what the frontmatter should look like:
 
 ```markdown
+<!-- filler line (always add this filler line or code wont work)-->
 ---
 title: Your Blog Post Title
 subtitle: A brief and engaging subtitle for your post.
