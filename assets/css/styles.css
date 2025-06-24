@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Outfit:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Outfit:wght@400;500;700&display=swap");
 
 html {
   scroll-behavior: smooth;
 }
 body {
   margin: 0;
-  font-family: 'Outfit', 'Libre Baskerville', serif;
+  font-family: "Outfit", "Libre Baskerville", serif;
   background: #f8fafc;
   color: #222;
 }
@@ -15,9 +15,10 @@ header {
   justify-content: space-between;
   background: #fff;
   padding: 1rem 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
-.logo, .footer-logo {
+.logo,
+.footer-logo {
   font-weight: bold;
   font-size: 1.5rem;
   color: #2d3748;
@@ -39,7 +40,9 @@ nav a {
 nav a:hover {
   color: #3182ce;
 }
-.actions, .community, .support {
+.actions,
+.community,
+.support {
   display: none !important;
 }
 .hero {
@@ -77,7 +80,7 @@ main {
 .curriculum {
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   padding: 2rem;
   margin-bottom: 2rem;
 }
@@ -105,7 +108,7 @@ main {
   top: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   justify-content: center;
   align-items: center;
 }
@@ -125,10 +128,12 @@ main {
   cursor: pointer;
   color: #3182ce;
 }
-.about, .community, .support {
+.about,
+.community,
+.support {
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   padding: 2rem;
   margin-bottom: 2rem;
 }
@@ -143,7 +148,8 @@ footer {
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }
-.footer-links, .footer-social {
+.footer-links,
+.footer-social {
   margin-bottom: 1rem;
 }
 .footer-links a {
@@ -169,29 +175,30 @@ footer {
   width: 100%;
   border-collapse: collapse;
   margin: 2em 0;
-  font-family: 'Outfit', sans-serif;
-  box-shadow: 0 2px 8px 0 rgba(215,191,174,0.08);
+  font-family: "Outfit", sans-serif;
+  box-shadow: 0 2px 8px 0 rgba(215, 191, 174, 0.08);
   border-radius: 1rem;
   overflow: hidden;
-  border: 1px solid #F0E6D2;
+  border: 1px solid #f0e6d2;
 }
 
-.md-content th, .md-content td {
+.md-content th,
+.md-content td {
   padding: 1rem 1.25rem;
   text-align: left;
-  border-bottom: 1px solid #F0E6D2;
+  border-bottom: 1px solid #f0e6d2;
 }
 
 .md-content th {
-  background: #FFF8F0;
-  color: #A68A6D;
+  background: #fff8f0;
+  color: #a68a6d;
   font-weight: 700;
-  font-family: 'Libre Baskerville', serif;
+  font-family: "Libre Baskerville", serif;
   letter-spacing: 0.5px;
 }
 
 .md-content tr {
-  background-color: #FFF;
+  background-color: #fff;
 }
 
 .md-content tr:last-child td {
@@ -199,21 +206,21 @@ footer {
 }
 
 .md-content tr:hover {
-  background-color: #FAF3E0;
+  background-color: #faf3e0;
 }
 
 .cream-bg {
-  background: #FAF3E0;
+  background: #faf3e0;
 }
 .card {
-  background: #FFF;
+  background: #fff;
   border-radius: 1.25rem;
-  border: 1px solid #F0E6D2;
+  border: 1px solid #f0e6d2;
   transition: box-shadow 0.2s, transform 0.2s;
-  box-shadow: 0 2px 8px 0 rgba(215,191,174,0.04);
+  box-shadow: 0 2px 8px 0 rgba(215, 191, 174, 0.04);
 }
 .card:hover {
-  box-shadow: 0 4px 16px 0 rgba(215,191,174,0.10);
+  box-shadow: 0 4px 16px 0 rgba(215, 191, 174, 0.1);
   transform: translateY(-2px) scale(1.01);
 }
 .fadein {
@@ -226,8 +233,64 @@ footer {
   transform: translateY(0);
 }
 .serif {
-  font-family: 'Libre Baskerville', serif;
+  font-family: "Libre Baskerville", serif;
 }
 .outfit {
-  font-family: 'Outfit', sans-serif;
-} 
+  font-family: "Outfit", sans-serif;
+}
+
+/* Additional mobile responsiveness improvements */
+@media (max-width: 640px) {
+  /* Ensure text doesn't become too small on mobile */
+  .text-xs {
+    font-size: 0.75rem;
+  }
+  .text-sm {
+    font-size: 0.875rem;
+  }
+  .text-base {
+    font-size: 1rem;
+  }
+
+  /* Improve touch targets */
+  button,
+  .btn,
+  a[role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better spacing for mobile */
+  .px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  /* Ensure cards are fully visible */
+  .card {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+/* Ensure proper line height for readability */
+.md-content p,
+.md-content li {
+  line-height: 1.6;
+}
+
+/* Better touch scrolling */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide horizontal scrollbars on mobile if they appear */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+}
