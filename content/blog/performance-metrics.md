@@ -1,6 +1,6 @@
 ---
 title: Performance Metrics
-subtitle: Choosing the Right Yardstick for Your Model
+subtitle: Performance metrics tell you if your model actually works.
 author: yashasnadigsyn
 ---
 
