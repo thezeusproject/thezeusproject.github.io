@@ -92,7 +92,11 @@ Promise.all([
 //...
 ```
 
-### Step 5: Submit a Pull Request
+### Step 5 : Manually update the `/assets/curriculum.js` file
+
+Please update the file with your blog details under the const `blogs`.
+
+### Step 6: Submit a Pull Request
 
 Once you have created your blog post and project files, commit the changes and push them to your fork.
 
