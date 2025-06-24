@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Outfit:wght@400;500;700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  font-family: 'Outfit', 'Libre Baskerville', serif;
+  background: #f8fafc;
+  color: #222;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.logo, .footer-logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #2d3748;
+  letter-spacing: 1px;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+nav a {
+  text-decoration: none;
+  color: #2d3748;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: #3182ce;
+}
+.actions, .community, .support {
+  display: none !important;
+}
+.hero {
+  background: linear-gradient(90deg, #3182ce 0%, #63b3ed 100%);
+  color: #fff;
+  padding: 4rem 2rem 3rem 2rem;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+.cta {
+  background: #fff;
+  color: #3182ce;
+  padding: 0.8rem 2rem;
+  border-radius: 4px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.cta:hover {
+  background: #3182ce;
+  color: #fff;
+}
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+.curriculum {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+.lesson {
+  margin-bottom: 1.5rem;
+}
+.lesson button {
+  background: #3182ce;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.lesson button:hover {
+  background: #2563eb;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: auto;
+  position: relative;
+}
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #3182ce;
+}
+.about, .community, .support {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+footer {
+  background: #2d3748;
+  color: #fff;
+  padding: 2rem 1rem 1rem 1rem;
+  text-align: center;
+}
+.footer-logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.footer-links, .footer-social {
+  margin-bottom: 1rem;
+}
+.footer-links a {
+  color: #fff;
+  margin: 0 0.5rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+.footer-links a:hover {
+  text-decoration: underline;
+}
+.footer-social span {
+  margin: 0 0.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.footer-social span:hover {
+  text-decoration: underline;
+}
+
+/* Table Styles */
+.md-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  font-family: 'Outfit', sans-serif;
+  box-shadow: 0 2px 8px 0 rgba(215,191,174,0.08);
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid #F0E6D2;
+}
+
+.md-content th, .md-content td {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid #F0E6D2;
+}
+
+.md-content th {
+  background: #FFF8F0;
+  color: #A68A6D;
+  font-weight: 700;
+  font-family: 'Libre Baskerville', serif;
+  letter-spacing: 0.5px;
+}
+
+.md-content tr {
+  background-color: #FFF;
+}
+
+.md-content tr:last-child td {
+  border-bottom: none;
+}
+
+.md-content tr:hover {
+  background-color: #FAF3E0;
+}
+
+.cream-bg {
+  background: #FAF3E0;
+}
+.card {
+  background: #FFF;
+  border-radius: 1.25rem;
+  border: 1px solid #F0E6D2;
+  transition: box-shadow 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(215,191,174,0.04);
+}
+.card:hover {
+  box-shadow: 0 4px 16px 0 rgba(215,191,174,0.10);
+  transform: translateY(-2px) scale(1.01);
+}
+.fadein {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.fadein.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.serif {
+  font-family: 'Libre Baskerville', serif;
+}
+.outfit {
+  font-family: 'Outfit', sans-serif;
+} 

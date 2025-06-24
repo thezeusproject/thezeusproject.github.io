@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zeus Project Curriculum</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <link href="../assets/css/styles.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="cream-bg min-h-screen text-[#3B3025] flex flex-col">
+  <header class="flex items-center justify-between px-6 py-4 border-b border-[#F0E6D2] bg-[#FAF3E0]">
+    <div class="text-2xl font-bold tracking-wide serif text-[#A68A6D]">The Zeus Project</div>
+    <nav>
+      <ul class="flex space-x-6 text-lg outfit font-semibold">
+        <li><a href="index.html" class="hover:text-[#A68A6D] transition-colors">Home</a></li>
+        <li><a href="curriculum.html" class="hover:text-[#A68A6D] transition-colors">Curriculum</a></li>
+        <li><a href="about.html" class="hover:text-[#A68A6D] transition-colors">About</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="max-w-4xl mx-auto px-4 py-16 flex-grow">
+    <section class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-[#b1a091] serif tracking-wider leading-relaxed">Machine Learning Curriculum</h1>
+      <p class="text-lg md:text-xl text-[#4A3E31] mb-8 outfit">Hands-on, project-based ML lessons for self-taught learners. Start with the basics, master the future.</p>
+    </section>
+    
+    <div class="mb-8 px-4">
+        <input type="text" id="search-bar" placeholder="Search for lessons..." class="w-full px-4 py-2 rounded-full border border-[#F0E6D2] bg-[#FAF3E0] focus:outline-none focus:ring-2 focus:ring-[#A68A6D] outfit">
+    </div>
+
+    <section id="blog-list" class="grid md:grid-cols-2 gap-8 mb-20">
+      <!-- Blog lessons will be injected here by JS -->
+    </section>
+  </main>
+  <footer class="flex flex-col md:flex-row justify-between items-center py-6 px-4 border-t border-[#F0E6D2] bg-[#FAF3E0] text-xs serif">
+    <div class="mb-2 md:mb-0 text-[#A68A6D]">&copy; 2025 The Zeus Project</div>
+    <div class="flex space-x-4">
+      <a href="https://github.com/thezeusproject/thezeusproject.github.io" class="hover:text-[#A68A6D] transition-colors" aria-label="GitHub">GitHub</a>
+      <a href="#" class="hover:text-[#A68A6D] transition-colors" aria-label="Discord">Discord</a>
+      <a href="#" class="hover:text-[#A68A6D] transition-colors" aria-label="Twitter">Twitter</a>
+    </div>
+  </footer>
+  <script src="../assets/js/curriculum.js"></script>
+</body>
+</html> 
