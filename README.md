@@ -13,7 +13,7 @@ To contribute a new blog post and project, you'll need to add two files: one for
 Start by forking the repository to your own GitHub account and then clone it to your local machine.
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Zeus-Project.git
+git clone https://github.com/thezeusproject/thezeusproject.github.io
 cd Zeus-Project
 ```
 
