@@ -4,9 +4,11 @@ Welcome to the Zeus Project! This repository is a collection of educational post
 
 We welcome contributions from the community! If you have a topic you'd like to write about, please follow the steps below.
 
+
+
 ## How to Contribute
 
-To contribute a new blog post and project, you'll need to add two files: one for the blog content and one for the project description.
+To contribute a new blog post and project, you'll need to add two files: one for the blog content and one for the project description. Your contribution will not be considered if you don't follow the process
 
 ### Step 1: Fork and Clone the Repository
 
