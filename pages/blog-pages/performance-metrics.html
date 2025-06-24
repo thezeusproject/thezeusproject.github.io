@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Performance Metrics | Zeus Project</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <link href="../../assets/css/styles.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', 'Libre Baskerville', serif; }
+    .cream-bg { background: #FAF3E0; }
+    .card {
+      background: #FFF;
+      border-radius: 1.25rem;
+      border: 1px solid #F0E6D2;
+      transition: box-shadow 0.2s, transform 0.2s;
+      box-shadow: 0 2px 8px 0 rgba(215,191,174,0.04);
+    }
+    .card:hover {
+      box-shadow: 0 4px 16px 0 rgba(215,191,174,0.10);
+      /* transform: translateY(-2px) scale(1.01); */
+    }
+    .fadein { opacity: 0; transition: opacity 1s cubic-bezier(0.4,0,0.2,1); }
+    .fadein.visible { opacity: 1; }
+    .serif { font-family: 'Libre Baskerville', serif; }
+    .outfit { font-family: 'Outfit', sans-serif; }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+      background: #F0E6D2;
+      border-radius: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D7BFAE;
+      border-radius: 8px;
+      border: 2px solid #FAF3E0;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #CBB59A;
+    }
+    /* Button style */
+    .btn {
+      display: inline-block;
+      padding: 0.6rem 1.5rem;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, #D7BFAE 0%, #CBB59A 100%);
+      color: #3B3025;
+      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+      border: 1px solid #E8D9C3;
+      transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+      box-shadow: 0 2px 8px 0 rgba(215,191,174,0.08);
+    }
+    .btn:hover {
+      background: linear-gradient(90deg, #CBB59A 0%, #D7BFAE 100%);
+      color: #A68A6D;
+      box-shadow: 0 4px 16px 0 rgba(215,191,174,0.15);
+    }
+    /* Markdown content style */
+    .md-content h1, .md-content h2, .md-content h3, .md-content h4 {
+      color: #A68A6D;
+      font-family: 'Libre Baskerville', serif;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+    }
+    .md-content p, .md-content ul, .md-content ol, .md-content blockquote {
+      color: #4A3E31;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+    }
+    .md-content blockquote {
+      border-left: 4px solid #D7BFAE;
+      background: #FFF8F0;
+      color: #A68A6D;
+      font-style: italic;
+      padding: 1rem 1.5rem;
+      border-radius: 0.75rem;
+      margin: 1.5em 0;
+    }
+    .md-content code, .md-content pre {
+      background: #FAF3E0;
+      color: #3B3025;
+      border-radius: 0.5em;
+      font-size: 1em;
+    }
+    .md-content pre {
+      padding: 1em;
+      overflow-x: auto;
+      margin: 1.5em 0;
+    }
+    .md-content ul, .md-content ol {
+      margin-left: 1.5em;
+      margin-bottom: 1em;
+    }
+    .md-content li {
+      margin-bottom: 0.5em;
+    }
+    .katex {
+      font-size: 1.1em;
+      color: #4A3E31;
+    }
+    .md-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 1rem;
+      margin: 2em auto;
+      display: block;
+      box-shadow: 0 4px 16px 0 rgba(215,191,174,0.12);
+    }
+    #projects-section {
+      position: sticky;
+      top: 6rem;
+      height: calc(100vh - 8rem);
+      overflow-y: auto;
+    }
+    .project-card {
+        background: #FFF;
+        border-radius: 1.25rem;
+        border: 1px solid #F0E6D2;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    .progress-bar-container {
+        background-color: #F0E6D2;
+        border-radius: 9999px;
+        height: 10px;
+        margin-bottom: 1rem;
+    }
+    .progress-bar {
+        background-color: #A68A6D;
+        height: 100%;
+        border-radius: 9999px;
+        transition: width 0.3s ease-in-out;
+    }
+    .project-tasks ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .project-tasks li {
+      margin-bottom: 0.5rem;
+    }
+    .project-tasks input[type="checkbox"] {
+      margin-right: 0.75rem;
+      accent-color: #A68A6D;
+    }
+    .task-completed {
+        text-decoration: line-through;
+        color: #A68A6D;
+    }
+    #toc-sidebar {
+      position: fixed;
+      left: 1rem;
+      top: 6rem;
+      height: auto;
+      max-height: calc(100vh - 8rem);
+      width: 280px;
+      background: #FFF;
+      border: 1px solid #F0E6D2;
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      transform: translateX(-120%);
+      opacity: 0;
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      z-index: 1001;
+      overflow-y: auto;
+      font-family: 'Outfit', sans-serif;
+      box-shadow: 0 4px 16px 0 rgba(215,191,174,0.15);
+    }
+    #toc-sidebar.open {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    #toc-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.2);
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      z-index: 1000;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(215,191,174,0.15);
+    }
+    #toc-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #toc-sidebar h3 {
+      font-family: 'Libre Baskerville', serif;
+      color: #A68A6D;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    #toc-sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    #toc-sidebar li a {
+      display: block;
+      color: #4A3E31;
+      padding: 0.5rem 0;
+      border-left: 3px solid transparent;
+      padding-left: 1rem;
+      transition: all 0.2s;
+    }
+    #toc-sidebar li a:hover {
+      color: #A68A6D;
+      background: #FAF3E0;
+    }
+    #toc-sidebar li a.active {
+      color: #A68A6D;
+      font-weight: 700;
+      border-left-color: #D7BFAE;
+    }
+    #toc-toggle {
+      position: fixed;
+      top: 80px;
+      left: 1rem;
+      background: #D7BFAE;
+      color: #3B3025;
+      border: 1px solid #E8D9C3;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(215,191,174,0.15);
+      z-index: 1002;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="cream-bg min-h-screen text-[#3B3025] flex flex-col">
+  <div id="toc-overlay" style="display:none;"></div>
+  <div id="toc-sidebar">
+    <h3>Table of Contents</h3>
+    <ul id="toc-list"></ul>
+  </div>
+  <button id="toc-toggle">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+  </button>
+  <header class="flex items-center justify-between px-6 py-4 border-b border-[#F0E6D2] bg-[#FAF3E0]">
+    <div class="text-2xl font-bold tracking-wide serif text-[#A68A6D]">The Zeus Project</div>
+    <nav>
+      <ul class="flex space-x-6 text-lg outfit font-semibold">
+        <li><a href="../index.html" class="hover:text-[#A68A6D] transition-colors">Home</a></li>
+        <li><a href="../curriculum.html" class="hover:text-[#A68A6D] transition-colors">Curriculum</a></li>
+        <li><a href="../about.html" class="hover:text-[#A68A6D] transition-colors">About</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="max-w-7xl mx-auto px-4 py-16 flex-grow grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="lg:col-span-2">
+      <section class="text-center mb-12">
+        <h1 id="lesson-title" class="text-4xl md:text-5xl font-extrabold mb-4 text-[#b1a091] serif tracking-wider leading-relaxed">Performance Metrics</h1>
+        <p id="lesson-subtitle" class="text-lg md:text-xl text-[#4A3E31] mb-8 outfit">Performance metrics tells you if your model actually works.</p>
+        <p class="text-md text-[#4A3E31] mb-8 outfit">by <span id="contributor-name">yashasnadigsyn</span></p>
+        <button class="btn" onclick="loadLesson()">Reload Lesson</button>
+      </section>
+      <section class="card p-8 mb-12 fadein">
+        <div id="lesson-content" class="md-content"></div>
+      </section>
+      <section class="text-center">
+        <h3 class="text-lg font-bold mb-4 text-[#A68A6D] serif">Share this article</h3>
+        <div class="flex justify-center space-x-4">
+          <a href="#" id="share-twitter" class="social-share" aria-label="Share on Twitter">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.26C11.73,8.63 11.77,8.98 11.84,9.31C8.16,9.14 4.88,7.47 2.6,4.79C2.22,5.42 2,6.16 2,6.94C2,8.43 2.82,9.73 3.94,10.45C3.25,10.42 2.57,10.22 2,9.91C2,11.91 3.43,13.59 5.32,13.95C4.92,14.05 4.5,14.08 4.07,14.08C3.82,14.08 3.58,14.06 3.34,14.01C3.86,15.65 5.29,16.8 7,16.84C5.57,17.93 3.81,18.5 2,18.5C1.62,18.5 1.24,18.48 0.87,18.44C2.43,19.49 4.37,20.1 6.5,20.1C16.02,20.1 20.5,12.37 20.5,5.78C20.5,5.58 20.5,5.39 20.49,5.19C21.3,4.57 22,3.82 22.46,3H22.46V6Z"/></svg>
+          </a>
+          <a href="#" id="share-linkedin" class="social-share" aria-label="Share on LinkedIn">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,18.5V13.2A3.26,3.26 0 0,0 15.24,9.94C14.39,9.94 13.4,10.43 12.93,11.19V10.13H10.13V18.5H12.93V13.57C12.93,12.8 13.54,12.17 14.31,12.17C15.08,12.17 15.69,12.8 15.69,13.57V18.5H18.5M6.88,8.56A1.68,1.68 0 0,0 8.56,6.88C8.56,6 7.81,5.31 6.88,5.31C5.94,5.31 5.25,6 5.25,6.88C5.25,7.81 5.94,8.56 6.88,8.56M8.27,18.5V10.13H5.5V18.5H8.27Z"/></svg>
+          </a>
+        </div>
+      </section>
+    </div>
+    <aside id="projects-section" class="lg:col-span-1">
+        <!-- Projects will be loaded here -->
+    </aside>
+  </main>
+  <footer class="flex flex-col md:flex-row justify-between items-center py-6 px-4 border-t border-[#F0E6D2] bg-[#FAF3E0] text-xs serif">
+    <div class="mb-2 md:mb-0 text-[#A68A6D]">&copy; 2025 The Zeus Project</div>
+    <div class="flex space-x-4">
+      <a href="https://github.com/thezeusproject/thezeusproject.github.io" class="hover:text-[#A68A6D] transition-colors" aria-label="GitHub">GitHub</a>
+      <a href="https://discord.gg/your-invite" class="hover:text-[#A68A6D] transition-colors" aria-label="Discord">Discord</a>
+      <a href="https://twitter.com/your-handle" class="hover:text-[#A68A6D] transition-colors" aria-label="Twitter">Twitter</a>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script>
+    const LESSON_ID = 'performance-metrics';
+    const MD_PATH = `../../content/blog/performance-metrics.md`;
+    const CONTRIBUTOR = 'yashasnadigsyn';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadLesson();
+      setupTOC();
+      setupSocialShare();
+      loadProjects();
+    });
+
+    function loadLesson() {
+      const lessonContentEl = document.getElementById('lesson-content');
+      const lessonTitleEl = document.getElementById('lesson-title');
+      const lessonSubtitleEl = document.getElementById('lesson-subtitle');
+      const contributorNameEl = document.getElementById('contributor-name');
+
+      fetch(MD_PATH)
+        .then(response => response.ok ? response.text() : Promise.reject('File not found'))
+        .then(text => {
+          const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
+          const match = text.match(frontmatterRegex);
+  
+          let content = text;
+          if (match) {
+            const frontmatter = match[1];
+            content = text.substring(match.index + match[0].length);
+            const metadata = {};
+            frontmatter.split('\n').forEach(line => {
+              if (line.includes(':')) {
+                const [key, ...valueParts] = line.split(':');
+                metadata[key.trim()] = valueParts.join(':').trim();
+              }
+            });
+            lessonTitleEl.innerText = metadata.title || 'Performance Metrics';
+            lessonSubtitleEl.innerText = metadata.subtitle || 'Understanding Model Performance';
+            contributorNameEl.innerText = metadata.author || 'yashasnadigsyn';
+          }
+          
+          lessonContentEl.innerHTML = marked.parse(content);
+  
+          renderMathInElement(lessonContentEl, {
+            delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+            ]
+          });
+          hljs.highlightAll();
+          generateTOC();
+  
+          setTimeout(() => {
+            document.querySelector('.fadein').classList.add('visible');
+          }, 100);
+        })
+        .catch(error => {
+          console.error('Error fetching the lesson content:', error);
+          lessonContentEl.innerHTML = `<p class="text-red-500">Error loading lesson. Please try again later.</p>`;
+        });
+    }
+
+    function setupSocialShare() {
+        const url = window.location.href;
+        const text = `Check out this lesson on ${document.title}`;
+        document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
+        document.getElementById('share-linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+    }
+    
+    function setupTOC() {
+      const tocToggle = document.getElementById('toc-toggle');
+      const tocSidebar = document.getElementById('toc-sidebar');
+      const tocOverlay = document.getElementById('toc-overlay');
+
+      const toggleTOC = () => {
+        const isOpen = tocSidebar.classList.toggle('open');
+        tocOverlay.style.display = isOpen ? 'block' : 'none';
+        tocOverlay.classList.toggle('open', isOpen);
+      };
+
+      tocToggle.addEventListener('click', toggleTOC);
+      tocOverlay.addEventListener('click', toggleTOC);
+    }
+    
+    function generateTOC() {
+      const content = document.getElementById('lesson-content');
+      const tocList = document.getElementById('toc-list');
+      tocList.innerHTML = '';
+      const headings = content.querySelectorAll('h1, h2, h3, h4, h5, h6');
+      
+      headings.forEach(heading => {
+        const id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+        heading.id = id;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `#${id}`;
+        a.textContent = heading.textContent;
+        a.style.paddingLeft = `${(parseInt(heading.tagName[1]) - 1) * 1 + 1}rem`;
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+    }
+
+    function loadProjects() {
+        const projectsSection = document.getElementById('projects-section');
+        fetch(`../../content/projects/performance-metrics.md`)
+            .then(response => response.ok ? response.text() : Promise.reject('File not found'))
+            .then(markdown => {
+                const html = marked.parse(markdown, { gfm: true });
+                const projectContainer = document.createElement('div');
+                projectContainer.innerHTML = html;
+
+                const projectHTMLs = projectContainer.innerHTML.split('<hr>');
+                
+                projectsSection.innerHTML = ''; 
+
+                projectHTMLs.forEach((projectHTML, projectIndex) => {
+                    const projectCard = document.createElement('div');
+                    projectCard.className = 'project-card';
+                    projectCard.innerHTML = `<div class="project-tasks">${projectHTML}</div>`;
+                    projectsSection.appendChild(projectCard);
+                    
+                    const listItems = projectCard.querySelectorAll('.project-tasks li');
+                    const progressBar = projectCard.querySelector('.progress-bar');
+                    
+                    listItems.forEach((li, taskIndex) => {
+                        const checkbox = li.querySelector('input[type="checkbox"]');
+                        if (!checkbox) return;
+
+                        const isParentTask = li.querySelector('ul') !== null;
+                        
+                        // Wrap text content in a span for styling
+                        const textNode = checkbox.nextSibling;
+                        const span = document.createElement('span');
+                        if (textNode && textNode.nodeType === Node.TEXT_NODE) {
+                            span.textContent = textNode.textContent;
+                            li.insertBefore(span, textNode);
+                            li.removeChild(textNode);
+                        } else if (li.querySelector('strong')) {
+                            // handles bolded parent tasks
+                            const strong = li.querySelector('strong');
+                            span.appendChild(strong);
+                            li.appendChild(span);
+                        }
+
+
+                        if (isParentTask) {
+                            checkbox.style.display = 'none';
+                        } else {
+                            // It's a sub-task, enable it and add listeners
+                            checkbox.disabled = false;
+                            const taskId = `${LESSON_ID}-project-${projectIndex}-task-${taskIndex}`;
+                            
+                            const applyStyles = () => {
+                                if (checkbox.checked) {
+                                    span.classList.add('task-completed');
+                                } else {
+                                    span.classList.remove('task-completed');
+                                }
+                            };
+                            
+                            if (localStorage.getItem(taskId) === 'true') {
+                                checkbox.checked = true;
+                            }
+                            applyStyles();
+
+                            checkbox.addEventListener('change', () => {
+                                localStorage.setItem(taskId, checkbox.checked);
+                                applyStyles();
+                                updateProgress();
+                                updateTotalLessonProgress();
+                            });
+                        }
+                    });
+
+                    const updateProgress = () => {
+                        const allSubtasks = projectCard.querySelectorAll('.project-tasks li:not(:has(ul)) input[type="checkbox"]');
+                        const checkedSubtasks = projectCard.querySelectorAll('.project-tasks li:not(:has(ul)) input[type="checkbox"]:checked');
+                        const progress = allSubtasks.length > 0 ? (checkedSubtasks.length / allSubtasks.length) * 100 : 0;
+                        if (progressBar) {
+                            progressBar.style.width = `${progress}%`;
+                        }
+                    };
+                    
+                    updateProgress();
+                });
+
+                updateTotalLessonProgress();
+            })
+            .catch(error => {
+                console.error('Error fetching projects:', error);
+                projectsSection.innerHTML = '<p>No projects available for this lesson.</p>';
+            });
+    }
+
+    function updateTotalLessonProgress() {
+        const allTasks = document.querySelectorAll('#projects-section input[type="checkbox"]');
+        const allCheckedTasks = document.querySelectorAll('#projects-section input[type="checkbox"]:checked');
+        const totalProgress = allTasks.length > 0 ? (allCheckedTasks.length / allTasks.length) * 100 : 0;
+        localStorage.setItem(`zeus-progress-${LESSON_ID}`, totalProgress);
+    }
+
+  </script>
+</body>
+</html> 
