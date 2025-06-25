@@ -1,23 +1,21 @@
-const blogs = [
-  {
-    id: 'linear-regression',
-    title: "Linear Regression",
-    subtitle: "This is the most basic and overlooked in today's machine learning world, when we have advanced stuff, like transformers, RNNs and so much more. But in reality, if you dive deep into any kind of model, it will have linear regression in some form or the other!",
-    html: 'blog-pages/linear-regression.html'
-  },
-  {
-    id: 'optimizers',
-    title: "Optimizers",
-    subtitle: "A deep dive into the evolution of optimization algorithms in deep learning.",
-    html: 'blog-pages/optimizer-theory.html'
-  },
-  {
-    id: "performance-metrics",
-    title: "Performance Metrics",
-    subtitle: "Performance metrics tell you if your model actually works.",
-    html: "blog-pages/performance-metrics.html",
-  }
-];
+
+fetch('/blogData.json')
+  .then(response => response.json())
+  .then(blogs => {
+    loadBlogs(blogs);
+
+    const searchBar = document.getElementById('search-bar');
+    searchBar.addEventListener('keyup', (e) => {
+      const searchString = e.target.value.toLowerCase();
+      const filteredBlogs = blogs.filter(blog => {
+        return (
+          blog.title.toLowerCase().includes(searchString) ||
+          blog.subtitle.toLowerCase().includes(searchString)
+        );
+      });
+      loadBlogs(filteredBlogs);
+    });
+  });
 
 function loadBlogs(blogsToLoad) {
   const blogList = document.getElementById('blog-list');
@@ -27,7 +25,7 @@ function loadBlogs(blogsToLoad) {
     const card = document.createElement('div');
     card.className = 'card p-8 flex flex-col items-center fadein';
     const progress = localStorage.getItem(`zeus-progress-${blog.id}`) || 0;
-    card.innerHTML = `
+    card.innerHTML = ` 
       <div class="flex-grow">
         <h2 class="text-2xl font-bold mb-2 text-center text-[#A68A6D] serif">${blog.title}</h2>
         <p class="text-[#4A3E31] mb-4 outfit text-center">${blog.subtitle}</p>
@@ -48,17 +46,3 @@ function loadBlogs(blogsToLoad) {
     setTimeout(() => card.classList.add('visible'), 200 + i * 150);
   });
 }
-
-loadBlogs(blogs);
-
-const searchBar = document.getElementById('search-bar');
-searchBar.addEventListener('keyup', (e) => {
-    const searchString = e.target.value.toLowerCase();
-    const filteredBlogs = blogs.filter(blog => {
-        return (
-            blog.title.toLowerCase().includes(searchString) ||
-            blog.subtitle.toLowerCase().includes(searchString)
-        );
-    });
-    loadBlogs(filteredBlogs);
-});
