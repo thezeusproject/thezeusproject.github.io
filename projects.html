@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hall of Projects | Zeus Project</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <link href="assets/css/styles.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', 'Libre Baskerville', serif; }
+    .cream-bg { background: #FAF3E0; }
+    .card {
+      background: #FFF;
+      border-radius: 1.25rem;
+      border: 1px solid #F0E6D2;
+      transition: box-shadow 0.2s, transform 0.2s;
+      box-shadow: 0 2px 8px 0 rgba(215,191,174,0.04);
+    }
+    .card:hover {
+      box-shadow: 0 4px 16px 0 rgba(215,191,174,0.10);
+      transform: translateY(-2px);
+    }
+    .project-card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card .content {
+      flex-grow: 1;
+    }
+    .serif { font-family: 'Libre Baskerville', serif; }
+    .outfit { font-family: 'Outfit', sans-serif; }
+    .btn {
+      display: inline-block;
+      padding: 0.6rem 1.5rem;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, #D7BFAE 0%, #CBB59A 100%);
+      color: #3B3025;
+      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+      border: 1px solid #E8D9C3;
+      transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+      box-shadow: 0 2px 8px 0 rgba(215,191,174,0.08);
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: linear-gradient(90deg, #CBB59A 0%, #D7BFAE 100%);
+      color: #A68A6D;
+      box-shadow: 0 4px 16px 0 rgba(215,191,174,0.15);
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid #D7BFAE;
+      color: #A68A6D;
+    }
+    .btn-secondary:hover {
+      background: #D7BFAE;
+      color: #3B3025;
+    }
+    .filter-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      border: 2px solid #D7BFAE;
+      background: transparent;
+      color: #A68A6D;
+      font-weight: 600;
+      transition: all 0.2s;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .filter-btn.active {
+      background: #A68A6D;
+      color: #FAF3E0;
+      border-color: #A68A6D;
+    }
+    .filter-btn:hover {
+      background: #D7BFAE;
+      color: #3B3025;
+    }
+    .difficulty-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: white;
+    }
+    .upvote-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #D7BFAE;
+      background: transparent;
+      color: #A68A6D;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    .upvote-btn:hover {
+      background: #FAF3E0;
+    }
+    .upvote-btn.upvoted {
+      background: #A68A6D;
+      color: #FAF3E0;
+    }
+    .tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: #F0E6D2;
+      color: #A68A6D;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin: 0.125rem;
+    }
+    .search-input {
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      border: 2px solid #D7BFAE;
+      background: #FFF;
+      color: #3B3025;
+      font-family: 'Outfit', sans-serif;
+      width: 100%;
+      max-width: 400px;
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: #A68A6D;
+      box-shadow: 0 0 0 3px rgba(166, 138, 109, 0.1);
+    }
+    .project-thumbnail {
+      width: 100%;
+      height: 200px;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, #FAF3E0 0%, #F0E6D2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #A68A6D;
+      font-size: 3rem;
+      overflow: hidden;
+      position: relative;
+    }
+    .stats-card {
+      background: linear-gradient(135deg, #A68A6D 0%, #8B7A6D 100%);
+      color: #FAF3E0;
+      text-align: center;
+      padding: 2rem;
+      border-radius: 1.25rem;
+    }
+  </style>
+</head>
+<body class="cream-bg min-h-screen text-[#3B3025] flex flex-col">
+  <header class="flex items-center justify-between px-6 py-4 border-b border-[#F0E6D2] bg-[#FAF3E0]">
+    <div class="text-2xl font-bold tracking-wide serif text-[#A68A6D]">The Zeus Project</div>
+    <nav>
+      <ul class="flex space-x-6 text-lg outfit font-semibold">
+        <li><a href="index.html" class="hover:text-[#A68A6D] transition-colors">Home</a></li>
+        <li><a href="pages/curriculum.html" class="hover:text-[#A68A6D] transition-colors">Curriculum</a></li>
+        <li><a href="projects.html" class="text-[#A68A6D]">Projects</a></li>
+        <li><a href="pages/about.html" class="hover:text-[#A68A6D] transition-colors">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-16 flex-grow">
+    <!-- Hero Section -->
+    <section class="text-center mb-16">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-4 text-[#A68A6D] serif tracking-wider">Hall of Projects</h1>
+      <p class="text-xl md:text-2xl text-[#4A3E31] mb-8 outfit max-w-3xl mx-auto">
+        Showcase your machine learning projects and explore amazing work from the community
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#submit-project" class="btn">Submit Your Project</a>
+        <a href="#featured-projects" class="btn-secondary btn">Browse Projects</a>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+      <div class="stats-card">
+        <div class="text-3xl font-bold mb-2" id="total-projects">0</div>
+        <div class="text-lg opacity-90">Total Projects</div>
+      </div>
+      <div class="stats-card">
+        <div class="text-3xl font-bold mb-2" id="total-contributors">0</div>
+        <div class="text-lg opacity-90">Contributors</div>
+      </div>
+      <div class="stats-card">
+        <div class="text-3xl font-bold mb-2" id="total-upvotes">0</div>
+        <div class="text-lg opacity-90">Community Upvotes</div>
+      </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="mb-12">
+      <div class="flex flex-col lg:flex-row gap-6 items-center justify-between mb-6">
+        <input 
+          type="text" 
+          id="search-input" 
+          class="search-input" 
+          placeholder="Search projects by title, author, or tags..."
+        >
+        <div class="flex flex-wrap gap-3">
+          <button class="filter-btn active" data-category="all">All Projects</button>
+          <button class="filter-btn" data-category="classical-ml">Classical ML</button>
+          <button class="filter-btn" data-category="deep-learning">Deep Learning</button>
+          <button class="filter-btn" data-category="nlp">NLP</button>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-3 items-center">
+        <span class="text-[#A68A6D] font-semibold">Difficulty:</span>
+        <button class="filter-btn active" data-difficulty="all">All Levels</button>
+        <button class="filter-btn" data-difficulty="beginner">Beginner</button>
+        <button class="filter-btn" data-difficulty="intermediate">Intermediate</button>
+        <button class="filter-btn" data-difficulty="advanced">Advanced</button>
+      </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section id="featured-projects" class="mb-16">
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Projects will be loaded here -->
+      </div>
+      <div id="no-results" class="text-center py-16 hidden">
+        <div class="text-6xl mb-4">🔍</div>
+        <h3 class="text-2xl font-bold text-[#A68A6D] mb-2">No projects found</h3>
+        <p class="text-[#4A3E31]">Try adjusting your filters or search terms</p>
+      </div>
+    </section>
+
+    <!-- Submit Project Section -->
+    <section id="submit-project" class="card p-12 text-center">
+      <h2 class="text-4xl font-bold text-[#A68A6D] serif mb-6">Submit Your Project</h2>
+      <p class="text-lg text-[#4A3E31] mb-8 max-w-2xl mx-auto">
+        Ready to showcase your machine learning project? Submit a pull request to our projects.json file with your project details!
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://github.com/thezeusproject/thezeusproject.github.io/blob/main/projects.json" target="_blank" class="btn">
+          View projects.json
+        </a>
+        <a href="https://github.com/thezeusproject/thezeusproject.github.io/fork" target="_blank" class="btn-secondary btn">
+          Fork Repository
+        </a>
+      </div>
+      <div class="mt-8 text-sm text-[#A68A6D]">
+        <p>📋 Include: Title, Description, GitHub repo link, Tags, and Category</p>
+        <p>🎯 All experience levels welcome!</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Global variables
+    let allProjects = [];
+    let filteredProjects = [];
+    let currentFilters = {
+      category: 'all',
+      difficulty: 'all',
+      search: ''
+    };
+
+    // Load projects data
+    async function loadProjects() {
+      try {
+        const response = await fetch('projects.json');
+        const data = await response.json();
+        allProjects = data.projects;
+        filteredProjects = [...allProjects];
+        
+        updateStats();
+        renderProjects();
+        setupEventListeners();
+      } catch (error) {
+        console.error('Error loading projects:', error);
+        showFallbackMessage();
+      }
+    }
+
+    function showFallbackMessage() {
+      document.getElementById('projects-grid').innerHTML = `
+        <div class="col-span-full text-center py-16">
+          <div class="text-6xl mb-4">🚀</div>
+          <h3 class="text-2xl font-bold text-[#A68A6D] mb-2">Projects Loading...</h3>
+          <p class="text-[#4A3E31]">Projects will appear here once the JSON data loads.</p>
+        </div>
+      `;
+    }
+
+    // Update statistics
+    function updateStats() {
+      const totalProjects = allProjects.length;
+      const totalContributors = new Set(allProjects.map(p => p.author)).size;
+      const totalUpvotes = allProjects.reduce((sum, p) => sum + getUpvotes(p.id), 0);
+
+      document.getElementById('total-projects').textContent = totalProjects;
+      document.getElementById('total-contributors').textContent = totalContributors;
+      document.getElementById('total-upvotes').textContent = totalUpvotes;
+    }
+
+    // Get upvotes from localStorage
+    function getUpvotes(projectId) {
+      const upvotes = JSON.parse(localStorage.getItem('projectUpvotes') || '{}');
+      return upvotes[projectId] || 0;
+    }
+
+    // Check if user has upvoted a project
+    function hasUserUpvoted(projectId) {
+      const userUpvotes = JSON.parse(localStorage.getItem('userUpvotes') || '[]');
+      return userUpvotes.includes(projectId);
+    }
+
+    // Toggle upvote
+    function toggleUpvote(projectId) {
+      const upvotes = JSON.parse(localStorage.getItem('projectUpvotes') || '{}');
+      const userUpvotes = JSON.parse(localStorage.getItem('userUpvotes') || '[]');
+      
+      if (hasUserUpvoted(projectId)) {
+        // Remove upvote
+        upvotes[projectId] = Math.max(0, (upvotes[projectId] || 0) - 1);
+        const index = userUpvotes.indexOf(projectId);
+        userUpvotes.splice(index, 1);
+      } else {
+        // Add upvote
+        upvotes[projectId] = (upvotes[projectId] || 0) + 1;
+        userUpvotes.push(projectId);
+      }
+      
+      localStorage.setItem('projectUpvotes', JSON.stringify(upvotes));
+      localStorage.setItem('userUpvotes', JSON.stringify(userUpvotes));
+      
+      updateStats();
+      renderProjects();
+    }
+
+    // Get difficulty badge color
+    function getDifficultyColor(difficulty) {
+      const colors = {
+        'beginner': '#10B981',
+        'intermediate': '#F59E0B',
+        'advanced': '#EF4444'
+      };
+      return colors[difficulty] || '#6B7280';
+    }
+
+    // Render projects
+    function renderProjects() {
+      const grid = document.getElementById('projects-grid');
+      const noResults = document.getElementById('no-results');
+      
+      if (filteredProjects.length === 0) {
+        grid.style.display = 'none';
+        noResults.classList.remove('hidden');
+        return;
+      }
+      
+      grid.style.display = 'grid';
+      noResults.classList.add('hidden');
+      
+      grid.innerHTML = filteredProjects.map(project => {
+        const upvotes = getUpvotes(project.id);
+        const userUpvoted = hasUserUpvoted(project.id);
+        
+        return `
+          <div class="card project-card p-6">
+            <div class="content">
+              <div class="project-thumbnail mb-4">
+                <img src="${project.thumbnail}" alt="${project.title}" class="w-full h-full object-cover rounded-lg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div style="display:none;" class="w-full h-full flex items-center justify-center text-3xl text-[#A68A6D]">📊</div>
+              </div>
+              <div class="flex justify-between items-start mb-3">
+                <h3 class="text-xl font-bold text-[#A68A6D] serif leading-tight flex-1 mr-2">${project.title}</h3>
+                <span class="difficulty-badge" style="background-color: ${getDifficultyColor(project.difficulty)}">
+                  ${project.difficulty}
+                </span>
+              </div>
+              <p class="text-[#4A3E31] mb-4 text-sm leading-relaxed">${project.description}</p>
+              <div class="mb-4">
+                ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+              </div>
+              <div class="text-sm text-[#A68A6D] mb-4">
+                by <strong>${project.author}</strong> • ${new Date(project.dateSubmitted).toLocaleDateString()}
+              </div>
+            </div>
+            <div class="flex justify-between items-center pt-4 border-t border-[#F0E6D2]">
+              <button class="upvote-btn ${userUpvoted ? 'upvoted' : ''}" onclick="toggleUpvote('${project.id}')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                ${upvotes}
+              </button>
+              <a href="${project.githubRepo}" class="btn text-sm">
+                View Project
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Filter projects
+    function filterProjects() {
+      filteredProjects = allProjects.filter(project => {
+        // Category filter
+        if (currentFilters.category !== 'all' && project.category !== currentFilters.category) {
+          return false;
+        }
+        
+        // Difficulty filter
+        if (currentFilters.difficulty !== 'all' && project.difficulty !== currentFilters.difficulty) {
+          return false;
+        }
+        
+        // Search filter
+        if (currentFilters.search) {
+          const searchTerm = currentFilters.search.toLowerCase();
+          const searchableText = `${project.title} ${project.author} ${project.description} ${project.tags.join(' ')}`.toLowerCase();
+          if (!searchableText.includes(searchTerm)) {
+            return false;
+          }
+        }
+        
+        return true;
+      });
+      
+      renderProjects();
+    }
+
+    // Setup event listeners
+    function setupEventListeners() {
+      // Category filters
+      document.querySelectorAll('[data-category]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          // Update active state for category buttons only
+          document.querySelectorAll('[data-category]').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          
+          currentFilters.category = e.target.dataset.category;
+          filterProjects();
+        });
+      });
+      
+      // Difficulty filters
+      document.querySelectorAll('[data-difficulty]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          // Update active state for difficulty buttons only
+          document.querySelectorAll('[data-difficulty]').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          
+          currentFilters.difficulty = e.target.dataset.difficulty;
+          filterProjects();
+        });
+      });
+      
+      // Search input
+      document.getElementById('search-input').addEventListener('input', (e) => {
+        currentFilters.search = e.target.value;
+        filterProjects();
+      });
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', loadProjects);
+  </script>
+</body>
+</html> 

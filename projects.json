@@ -1,0 +1,56 @@
+{
+  "projects": [
+    {
+      "id": "linear-regression",
+      "title": "Linear Regression",
+      "author": "cneuralnetwork",
+      "githubRepo": "https://thezeusproject.github.io/pages/blog-pages/linear-regression.html",
+      "description": "A comprehensive tutorial on linear regression, covering the mathematical foundations, implementation from scratch, and practical applications. Learn how to build and evaluate linear models for prediction tasks.",
+      "tags": ["linear-regression", "mathematics", "statistics", "machine-learning"],
+      "category": "classical-ml",
+      "thumbnail": "assets/images/b1i1.png",
+      "difficulty": "beginner",
+      "dateSubmitted": "2024-12-01",
+      "upvotes": 0
+    },
+    {
+      "id": "optimizers",
+      "title": "Optimization Algorithms",
+      "author": "cneuralnetwork",
+      "githubRepo": "https://thezeusproject.github.io/pages/blog-pages/optimizer-theory.html",
+      "description": "Deep dive into optimization algorithms used in machine learning. Explore gradient descent variants, adaptive learning rate methods, and their impact on model training performance.",
+      "tags": ["optimization", "gradient-descent", "adam", "deep-learning"],
+      "category": "deep-learning",
+      "thumbnail": "assets/images/b2i1.png",
+      "difficulty": "intermediate",
+      "dateSubmitted": "2024-12-01",
+      "upvotes": 0
+    },
+    {
+      "id": "performance-metrics",
+      "title": "Performance Metrics",
+      "author": "yashasnadigsyn",
+      "githubRepo": "https://thezeusproject.github.io/pages/blog-pages/performance-metrics.html",
+      "description": "Complete guide to machine learning evaluation metrics. Learn when and how to use accuracy, precision, recall, F1-score, ROC curves, and other essential metrics for model assessment.",
+      "tags": ["evaluation", "metrics", "accuracy", "precision", "recall"],
+      "category": "classical-ml",
+      "thumbnail": "assets/images/b3i1.png",
+      "difficulty": "advanced",
+      "dateSubmitted": "2024-12-01",
+      "upvotes": 0
+    }
+  ],
+  "categories": [
+    {"id": "classical-ml", "name": "Classical ML", "description": "Traditional machine learning algorithms"},
+    {"id": "deep-learning", "name": "Deep Learning", "description": "Neural networks and deep learning projects"},
+    {"id": "nlp", "name": "Natural Language Processing", "description": "Text processing and language understanding"},
+    {"id": "computer-vision", "name": "Computer Vision", "description": "Image and video processing projects"},
+    {"id": "reinforcement-learning", "name": "Reinforcement Learning", "description": "RL agents and game AI"},
+    {"id": "data-science", "name": "Data Science", "description": "Data analysis and visualization projects"}
+  ],
+  "difficulties": [
+    {"id": "beginner", "name": "Beginner", "color": "#10B981"},
+    {"id": "intermediate", "name": "Intermediate", "color": "#F59E0B"},
+    {"id": "advanced", "name": "Advanced", "color": "#EF4444"}
+  ]
+} 
