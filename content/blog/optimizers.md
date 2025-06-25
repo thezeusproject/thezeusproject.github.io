@@ -1,4 +1,3 @@
-<!-- `made by` https://cneuralnets.netlify.app/ -->
 ---
 title: Optimizers
 subtitle: A deep dive into the evolution of optimization algorithms in deep learning.

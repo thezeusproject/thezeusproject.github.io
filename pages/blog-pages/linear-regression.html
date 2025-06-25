@@ -498,27 +498,16 @@
             response.ok ? response.text() : Promise.reject("File not found")
           )
           .then((text) => {
-            const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
-            const match = text.match(frontmatterRegex);
+            const { metadata , content } = parseFrontmatter(text);
+            
+            lessonTitleEl.innerText = metadata.title || "Linear Regression";
+            lessonSubtitleEl.innerText = metadata.subtitle || "A foundational technique for modeling relationships.";
+            contributorNameEl.innerText = metadata.author || "neuralnets";
 
-            let content = text;
-            if (match) {
-              const frontmatter = match[1];
-              content = text.substring(match.index + match[0].length);
-              const metadata = {};
-              frontmatter.split("\n").forEach((line) => {
-                if (line.includes(":")) {
-                  const [key, ...valueParts] = line.split(":");
-                  metadata[key.trim()] = valueParts.join(":").trim();
-                }
-              });
-              lessonTitleEl.innerText = metadata.title || "Linear Regression";
-              lessonSubtitleEl.innerText =
-                metadata.subtitle ||
-                "A foundational technique for modeling relationships.";
-              contributorNameEl.innerText = metadata.author || "neuralnets";
+            if (metadata.title) {
+              document.title = `${metadata.title} | The Zeus Project`;
             }
-
+            
             lessonContentEl.innerHTML = marked.parse(content);
 
             renderMathInElement(lessonContentEl, {
@@ -710,6 +699,53 @@
             ? (allCheckedTasks.length / allTasks.length) * 100
             : 0;
         localStorage.setItem(`zeus-progress-${LESSON_ID}`, totalProgress);
+      }
+
+      function parseFrontmatter(text) {
+        const cleanText = text.trim();
+        const frontmatterPattern = /^(?:<!-{2}[\s\S]*?-{2}>\s*)?---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+        const match = cleanText.match(frontmatterPattern);
+
+        if (!match) {
+          const laxPattern = /^(?:<!-{2}[\s\S]*?-{2}>\s*)?---\s*([\s\S]*?)\s*---([\s\S]*)$/;
+          const laxMatch = cleanText.match(laxPattern);
+
+          if (!laxMatch) {
+            return { 
+              metadata: {}, 
+              content: cleanText 
+            };
+          }
+
+          return {
+            metadata: parseMetadata(laxMatch[1]),
+            content: laxMatch[2].trim()
+          };
+        }
+        
+        return {
+          metadata: parseMetadata(match[1]),
+          content: match[2].trim()
+        };
+      }
+
+      function parseMetadata(frontmatterText) {
+        const metadata = {};
+        const lines = frontmatterText.trim().split('\n');
+
+        for (const line of lines) {
+          const trimmedLine = line.trim();
+          if (trimmedLine && trimmedLine.includes(':')) {
+            const colonIndex = trimmedLine.indexOf(':');
+            const key = trimmedLine.slice(0, colonIndex).trim();
+            const value = trimmedLine.substring(colonIndex + 1).trim().replace(/^["']|["']$/g, '');
+            if (key && value) {
+              metadata[key] = value;
+            }
+          }
+        }
+
+        return metadata;
       }
     </script>
   </body>
