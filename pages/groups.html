@@ -3,8 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Zeus Project</title>
+    <title>Zeus Project Groups</title>
     <link rel="icon" href="../favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Outfit:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link href="../assets/css/styles.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
@@ -52,34 +56,33 @@
         </ul>
       </nav>
     </header>
-    <main class="max-w-3xl mx-auto px-4 py-8 sm:py-16 flex-grow">
-      <section class="text-center mb-8 sm:mb-12">
+    <main class="max-w-4xl mx-auto px-4 py-8 sm:py-16 flex-grow">
+      <section class="text-center mb-12 sm:mb-16">
         <h1
           class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-[#b1a091] serif tracking-wider leading-relaxed"
         >
-          About The Zeus Project
+          Learning Groups
         </h1>
         <p class="text-lg md:text-xl text-[#4A3E31] mb-6 sm:mb-8 outfit px-2">
-          Empowering the next generation of machine learning engineers.
+          Explore topic-centric learning tracks designed to complement our curriculum.
+          Each group offers curated content and a structured learning path.
         </p>
       </section>
-      <section class="card p-6 sm:p-8 mb-12 sm:mb-20 fadein">
-        <h2 class="text-xl sm:text-2xl font-bold mb-4 text-[#A68A6D] serif">
-          Our Mission
-        </h2>
-        <p class="text-[#4A3E31] mb-6 outfit text-sm sm:text-base">
-          The Zeus Project is dedicated to providing a free, open-source, and
-          comprehensive curriculum for learning machine learning. We believe in
-          accessible education for all, with a focus on hands-on projects and
-          real-world applications.
-        </p>
-        <h2 class="text-xl sm:text-2xl font-bold mb-4 text-[#A68A6D] serif">
-          Our Vision
-        </h2>
-        <p class="text-[#4A3E31] outfit text-sm sm:text-base">
-          To build a global community of learners and contributors passionate
-          about advancing the field of machine learning.
-        </p>
+
+      <div class="mb-6 sm:mb-8 px-2 sm:px-4">
+        <input
+          type="text"
+          id="search-bar"
+          placeholder="Search for groups..."
+          class="w-full px-4 py-2 rounded-full border border-[#F0E6D2] bg-[#FAF3E0] focus:outline-none focus:ring-2 focus:ring-[#A68A6D] outfit"
+        />
+      </div>
+
+      <section
+        id="groups-list"
+        class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-20"
+      >
+        <!-- Groups will be injected here by JS -->
       </section>
     </main>
     <footer
@@ -109,6 +112,6 @@
         >
       </div>
     </footer>
-    <script src="../assets/js/about.js"></script>
+    <script src="../assets/js/groups.js"></script>
   </body>
 </html>
