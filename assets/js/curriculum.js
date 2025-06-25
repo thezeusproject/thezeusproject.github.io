@@ -16,6 +16,12 @@ const blogs = [
     title: "Performance Metrics",
     subtitle: "Performance metrics tell you if your model actually works.",
     html: "blog-pages/performance-metrics.html",
+  },
+  {
+    id: "Knn-theory",
+    title: "K Nearest Neighbours",
+    subtitle: "Detailed Guide to K Nearest Neighbour Theory and Code ",
+    html: "blog-pages/knn-theory.html",
   }
 ];
 
