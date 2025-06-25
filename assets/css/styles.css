@@ -294,3 +294,14 @@ footer {
     overflow-x: hidden;
   }
 }
+/*footer icons*/
+.social-icon {
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+.social-icon:hover {
+  transform: scale(1.15);
+}
+.footer-icon {
+  width: 2.000rem; 
+  height: 2.000rem;
+}
