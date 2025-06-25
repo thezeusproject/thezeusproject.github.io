@@ -316,6 +316,7 @@
         z-index: 1002;
         cursor: pointer;
       }
+      
     </style>
   </head>
   <body class="cream-bg min-h-screen text-[#3B3025] flex flex-col">
@@ -524,6 +525,37 @@
               ],
             });
             hljs.highlightAll();
+            document.querySelectorAll("pre").forEach((preBlock) => {
+              const button = document.createElement("button");
+              button.innerText = "Copy";
+              button.className = "copy-btn";
+              button.style.cssText = `
+                position: absolute;
+                top: 8px;
+                right: 8px;
+                padding: 4px 8px;
+                font-size: 12px;
+                cursor: pointer;
+                background: #111;
+                color: white;
+                border: none;
+                border-radius: 4px;
+              `;
+
+              const wrapper = document.createElement("div");
+              wrapper.style.position = "relative";
+              preBlock.parentNode.insertBefore(wrapper, preBlock);
+              wrapper.appendChild(preBlock);
+              wrapper.appendChild(button);
+
+              button.addEventListener("click", () => {
+                const code = preBlock.innerText;
+                navigator.clipboard.writeText(code).then(() => {
+                  button.innerText = "Copied!";
+                  setTimeout(() => (button.innerText = "Copy"), 2000);
+                });
+              });
+            });
             generateTOC();
 
             setTimeout(() => {
