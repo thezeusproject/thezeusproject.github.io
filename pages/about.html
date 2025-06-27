@@ -10,24 +10,17 @@
   </head>
   <body class="cream-bg min-h-screen text-[#3B3025] flex flex-col">
     <header
-      class="flex items-center justify-between px-4 sm:px-6 py-4 border-b border-[#F0E6D2] bg-[#FAF3E0]"
+      class="flex items-center justify-between px-10 py-4 border-b border-[#F0E6D2] bg-[#FAF3E0]"
     >
       <div
         class="text-xl sm:text-2xl font-bold tracking-wide serif text-[#A68A6D]"
       >
-        The Zeus Project
+        <a href="/index.html">The Zeus Project</a>
       </div>
       <nav>
         <ul
           class="flex space-x-3 sm:space-x-6 text-sm sm:text-lg outfit font-semibold"
         >
-          <li>
-            <a
-              href="../index.html"
-              class="hover:text-[#A68A6D] transition-colors"
-              >Home</a
-            >
-          </li>
           <li>
             <a
               href="/pages/curriculum.html"
@@ -76,31 +69,34 @@
       </section>
     </main>
     <footer
-      class="flex flex-col md:flex-row justify-between items-center py-4 sm:py-6 px-4 border-t border-[#F0E6D2] bg-[#FAF3E0] text-xs serif"
+      class="flex flex-col gap-8 justify-between items-center py-4 sm:py-6 px-4 border-t border-[#F0E6D2] bg-[#FAF3E0] text-xs serif"
     >
-      <div class="mb-2 md:mb-0 text-[#A68A6D]">
-        &copy; 2025 The Zeus Project
-      </div>
-      <div class="flex space-x-3 sm:space-x-4">
-        <a
-          href="https://github.com/thezeusproject/thezeusproject.github.io"
-          class="hover:text-[#A68A6D] transition-colors"
-          aria-label="GitHub"
-          >GitHub</a
+      <div class="flex gap-10">
+      <a
+        href="https://github.com/thezeusproject/thezeusproject.github.io"
+        class="social-icon"
+        aria-label="GitHub"
         >
-        <a
-          href="#"
-          class="hover:text-[#A68A6D] transition-colors"
-          aria-label="Discord"
-          >Discord</a
-        >
-        <a
-          href="#"
-          class="hover:text-[#A68A6D] transition-colors"
-          aria-label="Twitter"
-          >Twitter</a
-        >
-      </div>
+      <img src="/assets/icons/github.svg" alt="GitHub Icon" class="footer-icon" />
+      </a>
+      <a
+      href="#"
+      class="social-icon"
+      aria-label="Discord"
+      >
+      <img src="/assets/icons/discord.svg" alt="Discord Icon" class="footer-icon" />
+    </a>
+    <a
+      href="#"
+      class="social-icon"
+      aria-label="Twitter"
+      >
+      <img src="/assets/icons/x.svg" alt="X Icon" class="footer-icon" />
+    </a>
+    </div>
+    <div class="mb-2 md:mb-0 text-[#A68A6D]">
+      &copy; 2025 The Zeus Project
+    </div>
     </footer>
     <script src="../assets/js/about.js"></script>
   </body>
