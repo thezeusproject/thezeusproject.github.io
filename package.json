@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "gray-matter": "^4.0.3"
+  },
+  "type": "module",
+  "scripts": {
+  "build:blogs": "node assets/js/blogGeneration.js",
+  "start": "npm run build:blogs && npx serve ."
+  }
+}
