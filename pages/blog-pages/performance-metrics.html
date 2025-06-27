@@ -255,6 +255,7 @@
       <ul class="flex space-x-6 text-lg outfit font-semibold">
         <li><a href="../../index.html" class="hover:text-[#A68A6D] transition-colors">Home</a></li>
         <li><a href="../curriculum.html" class="hover:text-[#A68A6D] transition-colors">Curriculum</a></li>
+        <li><a href="../groups.html" class="hover:text-[#A68A6D] transition-colors">Groups</a></li>
         <li><a href="../about.html" class="hover:text-[#A68A6D] transition-colors">About</a></li>
       </ul>
     </nav>
@@ -321,7 +322,7 @@
         .then(text => {
           const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
           const match = text.match(frontmatterRegex);
-  
+
           let content = text;
           if (match) {
             const frontmatter = match[1];
@@ -337,9 +338,9 @@
             lessonSubtitleEl.innerText = metadata.subtitle || 'Understanding Model Performance';
             contributorNameEl.innerText = metadata.author || 'yashasnadigsyn';
           }
-          
+
           lessonContentEl.innerHTML = marked.parse(content);
-  
+
           renderMathInElement(lessonContentEl, {
             delimiters: [
               {left: '$$', right: '$$', display: true},
@@ -350,7 +351,7 @@
           });
           hljs.highlightAll();
           generateTOC();
-  
+
           setTimeout(() => {
             document.querySelector('.fadein').classList.add('visible');
           }, 100);
@@ -367,7 +368,7 @@
         document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
         document.getElementById('share-linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
     }
-    
+
     function setupTOC() {
       const tocToggle = document.getElementById('toc-toggle');
       const tocSidebar = document.getElementById('toc-sidebar');
@@ -382,13 +383,13 @@
       tocToggle.addEventListener('click', toggleTOC);
       tocOverlay.addEventListener('click', toggleTOC);
     }
-    
+
     function generateTOC() {
       const content = document.getElementById('lesson-content');
       const tocList = document.getElementById('toc-list');
       tocList.innerHTML = '';
       const headings = content.querySelectorAll('h1, h2, h3, h4, h5, h6');
-      
+
       headings.forEach(heading => {
         const id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
         heading.id = id;
@@ -412,24 +413,24 @@
                 projectContainer.innerHTML = html;
 
                 const projectHTMLs = projectContainer.innerHTML.split('<hr>');
-                
-                projectsSection.innerHTML = ''; 
+
+                projectsSection.innerHTML = '';
 
                 projectHTMLs.forEach((projectHTML, projectIndex) => {
                     const projectCard = document.createElement('div');
                     projectCard.className = 'project-card';
                     projectCard.innerHTML = `<div class="project-tasks">${projectHTML}</div>`;
                     projectsSection.appendChild(projectCard);
-                    
+
                     const listItems = projectCard.querySelectorAll('.project-tasks li');
                     const progressBar = projectCard.querySelector('.progress-bar');
-                    
+
                     listItems.forEach((li, taskIndex) => {
                         const checkbox = li.querySelector('input[type="checkbox"]');
                         if (!checkbox) return;
 
                         const isParentTask = li.querySelector('ul') !== null;
-                        
+
                         // Wrap text content in a span for styling
                         const textNode = checkbox.nextSibling;
                         const span = document.createElement('span');
@@ -451,7 +452,7 @@
                             // It's a sub-task, enable it and add listeners
                             checkbox.disabled = false;
                             const taskId = `${LESSON_ID}-project-${projectIndex}-task-${taskIndex}`;
-                            
+
                             const applyStyles = () => {
                                 if (checkbox.checked) {
                                     span.classList.add('task-completed');
@@ -459,7 +460,7 @@
                                     span.classList.remove('task-completed');
                                 }
                             };
-                            
+
                             if (localStorage.getItem(taskId) === 'true') {
                                 checkbox.checked = true;
                             }
@@ -482,7 +483,7 @@
                             progressBar.style.width = `${progress}%`;
                         }
                     };
-                    
+
                     updateProgress();
                 });
 
@@ -503,4 +504,4 @@
 
   </script>
 </body>
-</html> 
+</html>
