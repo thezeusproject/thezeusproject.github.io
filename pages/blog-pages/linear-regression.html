@@ -530,6 +530,43 @@
               ],
             });
             hljs.highlightAll();
+            document.querySelectorAll("pre").forEach((preBlock) => {
+              const button = document.createElement("button");
+              button.innerText = "Copy";
+              button.className = "copy-btn";
+              button.style.cssText = `
+                position: absolute;
+                top: 8px;
+                right: 8px;
+                padding: 4px 10px;
+                font-size: 12px;
+                cursor: pointer;
+                background: linear-gradient(90deg, #d7bfae 0%, #cbb59a 100%);
+                color: #3b3025;
+                font-family: "Outfit", sans-serif;
+                font-weight: 600;
+                border: 1px solid #e8d9c3;
+                border-radius: 0.75rem;
+                box-shadow: 0 2px 4px rgba(215, 191, 174, 0.15);
+                transition: background 0.2s, box-shadow 0.2s;
+                z-index: 10;
+                opacity: 0.85;
+              `;
+
+              const wrapper = document.createElement("div");
+              wrapper.style.position = "relative";
+              preBlock.parentNode.insertBefore(wrapper, preBlock);
+              wrapper.appendChild(preBlock);
+              wrapper.appendChild(button);
+
+              button.addEventListener("click", () => {
+                const code = preBlock.innerText;
+                navigator.clipboard.writeText(code).then(() => {
+                  button.innerText = "Copied!";
+                  setTimeout(() => (button.innerText = "Copy"), 2000);
+                });
+              });
+            });
             generateTOC();
 
             setTimeout(() => {
