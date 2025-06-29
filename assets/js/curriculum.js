@@ -16,6 +16,12 @@ const blogs = [
     title: "Performance Metrics",
     subtitle: "Performance metrics tell you if your model actually works.",
     html: "blog-pages/performance-metrics.html",
+  },
+  {
+    id: "k-means-clustering",
+    title: "K-Means Clustering",
+    subtitle: "Most fundamental idea of unsupervised learning, i.e, what can you do when you don't have any labels to learn from? You just bucket'similar' points together! The 'K' here stands for the number of clusters or buckets that the points are being segregated into.",
+    html: "blog-pages/k-means-clustering.html",
   }
 ];
 
