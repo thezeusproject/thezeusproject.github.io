@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>K-Means Clustering | Zeus Project</title>
+    <title>Decision Trees | Zeus Project</title>
     <link rel="icon" href="../../favicon.ico" />
     <link
       href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Outfit:wght@400;700&display=swap"
@@ -389,13 +389,13 @@
             id="lesson-title"
             class="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-[#b1a091] serif tracking-wider leading-relaxed"
           >
-            K-Means Clustering
+            Decision Trees
           </h1>
           <p
             id="lesson-subtitle"
             class="text-base sm:text-lg md:text-xl text-[#4A3E31] mb-6 sm:mb-8 outfit px-2"
           >
-            Most fundamental idea of unsupervised learning, i.e, what can you do when you don't have any labels to learn from? You just bucket "similar" points together! The "K" here stands for the number of clusters or buckets that the points are being segregated into.
+            ML version of taking decisions at crossroads. Do we indeed take the "road less travelled"?
           </p>
           <p class="text-sm sm:text-md text-[#4A3E31] mb-6 sm:mb-8 outfit">
             by <span id="contributor-name">shivanirudh</span>
@@ -474,8 +474,8 @@
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <script>
-      const LESSON_ID = "k-means-clustering";
-      const MD_PATH = `../../content/blog/k-means-clustering.md`;
+      const LESSON_ID = "decision_trees";
+      const MD_PATH = `../../content/blog/decision_trees.md`;
       const CONTRIBUTOR = "shivanirudh";
 
       document.addEventListener("DOMContentLoaded", () => {
@@ -511,10 +511,10 @@
                   metadata[key.trim()] = valueParts.join(":").trim();
                 }
               });
-              lessonTitleEl.innerText = metadata.title || "K-Means Clustering";
+              lessonTitleEl.innerText = metadata.title || "Decision Trees";
               lessonSubtitleEl.innerText =
                 metadata.subtitle ||
-                "A fundamental unsupervised learning algorithm";
+                "ML version of taking decisions at crossroads. Do we indeed take the 'road less travelled'?";
               contributorNameEl.innerText = metadata.author || "shivanirudh";
             }
 
@@ -597,7 +597,7 @@
 
       function loadProjects() {
         const projectsSection = document.getElementById("projects-section");
-        fetch(`../../content/projects/k-means-clustering.md`)
+        fetch(`../../content/projects/decision_trees.md`)
           .then((response) =>
             response.ok ? response.text() : Promise.reject("File not found")
           )
