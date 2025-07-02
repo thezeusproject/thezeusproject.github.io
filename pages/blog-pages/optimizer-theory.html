@@ -342,24 +342,17 @@
       </svg>
     </button>
     <header
-      class="flex items-center justify-between px-4 sm:px-6 py-4 border-b border-[#F0E6D2] bg-[#FAF3E0]"
+      class="flex items-center justify-between px-10 py-4 border-b border-[#F0E6D2] bg-[#FAF3E0]"
     >
       <div
         class="text-xl sm:text-2xl font-bold tracking-wide serif text-[#A68A6D]"
       >
-        The Zeus Project
+        <a href="/index.html">The Zeus Project</a>
       </div>
       <nav>
         <ul
           class="flex space-x-3 sm:space-x-6 text-sm sm:text-lg outfit font-semibold"
         >
-          <li>
-            <a
-              href="/../../index.html"
-              class="hover:text-[#A68A6D] transition-colors"
-              >Home</a
-            >
-          </li>
           <li>
             <a
               href="/pages/curriculum.html"
@@ -414,18 +407,14 @@
       <h3 class="text-base sm:text-lg font-bold mb-4 text-[#A68A6D] serif">
         Share this article
       </h3>
-      <div class="flex justify-center space-x-3 sm:space-x-4">
+      <div class="flex justify-center items-center space-x-3 sm:space-x-4">
         <a
           href="#"
           id="share-twitter"
           class="social-share text-[#4A3E31] hover:text-[#A68A6D] transition-colors"
           aria-label="Share on Twitter"
         >
-          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-            <path
-              d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.26C11.73,8.63 11.77,8.98 11.84,9.31C8.16,9.14 4.88,7.47 2.6,4.79C2.22,5.42 2,6.16 2,6.94C2,8.43 2.82,9.73 3.94,10.45C3.25,10.42 2.57,10.22 2,9.91C2,11.91 3.43,13.59 5.32,13.95C4.92,14.05 4.5,14.08 4.07,14.08C3.82,14.08 3.58,14.06 3.34,14.01C3.86,15.65 5.29,16.8 7,16.84C5.57,17.93 3.81,18.5 2,18.5C1.62,18.5 1.24,18.48 0.87,18.44C2.43,19.49 4.37,20.1 6.5,20.1C16.02,20.1 20.5,12.37 20.5,5.78C20.5,5.58 20.5,5.39 20.49,5.19C21.3,4.57 22,3.82 22.46,3H22.46V6Z"
-            />
-          </svg>
+          <img src="/assets/icons/x.svg" alt="X Icon" class="footer-icon" />
         </a>
         <a
           href="#"
@@ -442,30 +431,34 @@
       </div>
     </section>
     <footer
-      class="flex flex-col md:flex-row justify-between items-center py-4 sm:py-6 px-4 border-t border-[#F0E6D2] bg-[#FAF3E0] text-xs serif"
+      class="flex flex-col gap-8 justify-between items-center py-4 sm:py-6 px-4 border-t border-[#F0E6D2] bg-[#FAF3E0] text-xs serif"
     >
-      <div class="mb-2 md:mb-0 text-[#A68A6D]">
-        &copy; 2025 The Zeus Project
-      </div>      <div class="flex space-x-3 sm:space-x-4">
-        <a
-          href="https://github.com/thezeusproject/thezeusproject.github.io"
-          class="text-[#4A3E31] hover:text-[#A68A6D] transition-colors"
-          aria-label="GitHub"
-          >GitHub</a
+      <div class="flex gap-10">
+      <a
+        href="https://github.com/thezeusproject/thezeusproject.github.io"
+        class="social-icon"
+        aria-label="GitHub"
         >
-        <a
-          href="https://discord.gg/your-invite"
-          class="text-[#4A3E31] hover:text-[#A68A6D] transition-colors"
-          aria-label="Discord"
-          >Discord</a
-        >
-        <a
-          href="https://twitter.com/your-handle"
-          class="text-[#4A3E31] hover:text-[#A68A6D] transition-colors"
-          aria-label="Twitter"
-          >Twitter</a
-        >
-      </div>
+      <img src="/assets/icons/github.svg" alt="GitHub Icon" class="footer-icon" />
+      </a>
+      <a
+      href="#"
+      class="social-icon"
+      aria-label="Discord"
+      >
+      <img src="/assets/icons/discord.svg" alt="Discord Icon" class="footer-icon" />
+    </a>
+    <a
+      href="#"
+      class="social-icon"
+      aria-label="Twitter"
+      >
+      <img src="/assets/icons/x.svg" alt="X Icon" class="footer-icon" />
+    </a>
+    </div>
+    <div class="mb-2 md:mb-0 text-[#A68A6D]">
+      &copy; 2025 The Zeus Project
+    </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
