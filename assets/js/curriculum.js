@@ -1,23 +1,12 @@
-const blogs = [
-  {
-    id: 'linear-regression',
-    title: "Linear Regression",
-    subtitle: "This is the most basic and overlooked in today's machine learning world, when we have advanced stuff, like transformers, RNNs and so much more. But in reality, if you dive deep into any kind of model, it will have linear regression in some form or the other!",
-    html: 'blog-pages/linear-regression.html'
-  },
-  {
-    id: 'optimizers',
-    title: "Optimizers",
-    subtitle: "A deep dive into the evolution of optimization algorithms in deep learning.",
-    html: 'blog-pages/optimizer-theory.html'
-  },
-  {
-    id: "performance-metrics",
-    title: "Performance Metrics",
-    subtitle: "Performance metrics tell you if your model actually works.",
-    html: "blog-pages/performance-metrics.html",
-  }
-];
+let blogs = [];
+
+fetch('../../blogs.json')
+  .then(res => res.json())
+  .then(data => {
+    blogs = data;
+    loadBlogs(blogs);
+  });
+
 
 function loadBlogs(blogsToLoad) {
   const blogList = document.getElementById('blog-list');
