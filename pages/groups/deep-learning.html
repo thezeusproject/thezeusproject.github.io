@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deep Learning | Zeus Project Groups</title>
+    <link rel="icon" href="../../favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Outfit:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="../../assets/css/styles.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="cream-bg min-h-screen text-[#3B3025] flex flex-col">
+    <header
+      class="flex items-center justify-between px-4 sm:px-6 py-4 border-b border-[#F0E6D2] bg-[#FAF3E0]"
+    >
+      <div
+        class="text-xl sm:text-2xl font-bold tracking-wide serif text-[#A68A6D]"
+      >
+        The Zeus Project
+      </div>
+      <nav>
+        <ul
+          class="flex space-x-3 sm:space-x-6 text-sm sm:text-lg outfit font-semibold"
+        >
+          <li>
+            <a
+              href="../../index.html"
+              class="hover:text-[#A68A6D] transition-colors"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="/pages/curriculum.html"
+              class="hover:text-[#A68A6D] transition-colors"
+              >Curriculum</a
+            >
+          </li>
+          <li>
+            <a
+              href="/pages/groups.html"
+              class="hover:text-[#A68A6D] transition-colors"
+              >Groups</a
+            >
+          </li>
+          <li>
+            <a
+              href="/pages/about.html"
+              class="hover:text-[#A68A6D] transition-colors"
+              >About</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="max-w-4xl mx-auto px-4 py-4">
+      <nav class="text-sm outfit">
+        <a href="/pages/groups.html" class="text-[#A68A6D] hover:underline">Groups</a>
+        <span class="mx-2 text-[#4A3E31]">/</span>
+        <span class="text-[#4A3E31] font-semibold">Deep Learning</span>
+      </nav>
+    </div>
+
+    <main class="max-w-4xl mx-auto px-4 py-4 sm:py-8 flex-grow">
+      <!-- Group Header -->
+      <section class="text-center mb-8 sm:mb-12">
+        <h1
+          class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-[#b1a091] serif tracking-wider leading-relaxed"
+        >
+          Deep Learning
+        </h1>
+        <p class="text-lg md:text-xl text-[#4A3E31] mb-6 sm:mb-8 outfit px-2 max-w-3xl mx-auto">
+          Dive deep into neural networks, from basic perceptrons to advanced architectures.
+          Learn about CNNs, RNNs, and the latest breakthroughs in deep learning.
+        </p>
+
+        <!-- Progress Overview -->
+        <div class="max-w-md mx-auto mb-8">
+          <div class="text-sm text-[#4A3E31] mb-2 outfit font-semibold">Overall Progress</div>
+          <div class="w-full px-4 mb-2">
+            <div style="background-color: #F0E6D2; border-radius: 9999px; height: 8px;">
+              <div id="overall-progress" style="width: 0%; background-color: #A68A6D; height: 100%; border-radius: 9999px; transition: width 0.5s ease-in-out;"></div>
+            </div>
+          </div>
+          <div id="progress-text" class="text-sm text-[#4A3E31] outfit">In Progress</div>
+        </div>
+      </section>
+
+      <!-- Learning Path -->
+      <section class="mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-[#A68A6D] serif text-center">Learning Path</h2>
+        <div class="card p-6 sm:p-8 mb-8">
+          <h3 class="text-xl font-bold mb-4 text-[#A68A6D] serif">Recommended Learning Order</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <h4 class="font-semibold text-[#4A3E31] outfit mb-2">🧱 Foundations</h4>
+              <ul class="text-sm text-[#4A3E31] outfit space-y-1 mb-4">
+                <li>• Neural Networks</li>
+                <li>• Backpropagation</li>
+                <li>• Optimizers</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold text-[#4A3E31] outfit mb-2">🚀 Advanced Architectures</h4>
+              <ul class="text-sm text-[#4A3E31] outfit space-y-1 mb-4">
+                <li>• Convolutional Neural Networks</li>
+                <li>• Recurrent Neural Networks</li>
+                <li>• LSTMs & GRUs</li>
+                <li>• Regularization Techniques</li>
+              </ul>
+            </div>
+          </div>
+          <div class="mt-4 p-4 bg-[#FFF8F0] rounded-lg border border-[#F0E6D2]">
+            <p class="text-sm text-[#A68A6D] outfit italic">
+              💡 <strong>Tip:</strong> Start with understanding basic neural networks and backpropagation,
+              then explore different optimization algorithms before moving to specialized architectures.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Available Lessons -->
+      <section class="mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-[#A68A6D] serif text-center">Available Lessons</h2>
+        <div id="lessons-list" class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+          <!-- Lessons will be injected here by JS -->
+        </div>
+      </section>
+
+      <!-- Topics Overview -->
+      <section class="mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-[#A68A6D] serif text-center">Topics Covered</h2>
+        <div class="card p-6 sm:p-8">
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            <span class="text-sm px-3 py-2 rounded-full bg-[#F0E6D2] text-[#4A3E31] outfit text-center">Neural Networks</span>
+            <span class="text-sm px-3 py-2 rounded-full bg-[#F0E6D2] text-[#4A3E31] outfit text-center">Backpropagation</span>
+            <span class="text-sm px-3 py-2 rounded-full bg-[#F0E6D2] text-[#4A3E31] outfit text-center">CNNs</span>
+            <span class="text-sm px-3 py-2 rounded-full bg-[#F0E6D2] text-[#4A3E31] outfit text-center">RNNs</span>
+            <span class="text-sm px-3 py-2 rounded-full bg-[#F0E6D2] text-[#4A3E31] outfit text-center">LSTMs</span>
+            <span class="text-sm px-3 py-2 rounded-full bg-[#F0E6D2] text-[#4A3E31] outfit text-center">Optimizers</span>
+            <span class="text-sm px-3 py-2 rounded-full bg-[#F0E6D2] text-[#4A3E31] outfit text-center">Regularization</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="flex flex-col md:flex-row justify-between items-center py-4 sm:py-6 px-4 border-t border-[#F0E6D2] bg-[#FAF3E0] text-xs serif"
+    >
+      <div class="mb-2 md:mb-0 text-[#A68A6D]">
+        &copy; 2025 The Zeus Project
+      </div>
+      <div class="flex space-x-3 sm:space-x-4">
+        <a
+          href="https://github.com/thezeusproject/thezeusproject.github.io"
+          class="hover:text-[#A68A6D] transition-colors"
+          aria-label="GitHub"
+          >GitHub</a
+        >
+        <a
+          href="#"
+          class="hover:text-[#A68A6D] transition-colors"
+          aria-label="Discord"
+          >Discord</a
+        >
+        <a
+          href="#"
+          class="hover:text-[#A68A6D] transition-colors"
+          aria-label="Twitter"
+          >Twitter</a
+        >
+      </div>
+    </footer>
+    <script src="../../assets/js/group-detail.js" data-group-id="deep-learning"></script>
+  </body>
+</html>

@@ -108,8 +108,105 @@ git push origin main
 
 Then, go to the original repository on GitHub and open a Pull Request. We will review your contribution and merge it if everything looks good.
 
+## Organizing Blogs into Groups
+
+The Zeus Project organizes blog posts into thematic learning groups to provide structured learning paths. Each group represents a major topic area in machine learning and data science.
+
+### Current Learning Groups
+
+We currently have six main learning groups:
+
+1. **Classical ML** - Fundamental machine learning algorithms and concepts
+2. **Deep Learning** - Neural networks and deep learning architectures
+3. **Natural Language Processing** - Text processing and language understanding
+4. **Computer Vision** - Image processing and visual AI
+5. **Reinforcement Learning** - Decision-making and sequential learning
+6. **MLOps & Deployment** - Production ML systems and deployment
+
+### How to Add a Blog to a Group
+
+When contributing a new blog post, you should add it to the appropriate learning group to ensure it appears in the group's lesson list and contributes to the group's progress tracking.
+
+#### Step 1: Identify the Appropriate Group
+
+Choose the group that best matches your blog's topic:
+- **Classical ML**: Linear/logistic regression, decision trees, SVMs, clustering, ensemble methods, performance metrics
+- **Deep Learning**: Neural networks, backpropagation, CNNs, RNNs, optimizers, regularization
+- **NLP**: Text preprocessing, embeddings, transformers, sentiment analysis, language models
+- **Computer Vision**: Image processing, object detection, image classification, facial recognition
+- **Reinforcement Learning**: Q-learning, policy gradients, multi-agent systems, game theory
+- **MLOps**: Model deployment, monitoring, CI/CD, containerization, cloud platforms
+
+#### Step 2: Update Group Configuration Files
+
+You need to update **both** of these JavaScript files:
+
+1. **`assets/js/groups.js`** - Main groups page configuration
+2. **`assets/js/group-detail.js`** - Individual group page configuration
+
+In **both files**, find the appropriate group object and add your blog's ID to the `blogIds` array:
+
+```javascript
+{
+  id: 'classical-ml',
+  title: "Classical ML",
+  // ... other properties
+  blogIds: ['linear-regression', 'performance-metrics', 'your-new-blog-id'], // Add your blog ID here
+  // ... other properties
+}
+```
+
+Also add your blog's metadata to the `blogMetadata` array in **both files**:
+
+```javascript
+const blogMetadata = [
+  // ... existing blogs
+  {
+    id: 'your-new-blog-id',
+    title: "Your Blog Title",
+    subtitle: "Your blog subtitle",
+    html: 'blog-pages/your-blog.html', // Use '../blog-pages/your-blog.html' in group-detail.js
+    tags: ['relevant', 'tags', 'for', 'your', 'blog']
+  }
+];
+```
+
+#### Step 3: Create Group Page (if needed)
+
+If you're adding to a group that doesn't have a dedicated page yet (NLP, Computer Vision, Reinforcement Learning, or MLOps), you'll need to create one:
+
+1. Copy an existing group page from `pages/groups/` (e.g., `classical-ml.html`)
+2. Rename it to match the group ID (e.g., `nlp.html`)
+3. Update the content to reflect the new group's title, description, and topics
+4. Update the script tag at the bottom to use the correct `data-group-id`
+
+#### Step 4: Verify Group Assignment
+
+After adding your blog to a group:
+
+1. Your blog should appear in the group's lesson list
+2. The group's progress bar should reflect completion of your blog's projects
+3. The group should show the correct lesson count
+4. All progress calculations should display with 2 decimal places
+
+### Best Practices for Group Organization
+
+- **One primary group**: Each blog should belong to one primary group to avoid confusion
+- **Relevant grouping**: Choose the group that most closely matches your blog's core topic
+- **Consistent metadata**: Ensure your blog's metadata is identical in both configuration files
+- **Path correctness**: Use relative paths (`blog-pages/`) in `groups.js` and (`../blog-pages/`) in `group-detail.js`
+- **Tag consistency**: Use relevant tags that help with content discovery and filtering
+
+### Progress Tracking
+
+Groups track learning progress with 2-decimal precision:
+- Progress is calculated as: `(completed_blogs / total_blogs) * 100`
+- A blog is considered "completed" when its project tasks reach 100% completion
+- Group progress updates automatically as users complete blog projects
+- Progress displays with format like "66.67% completed" instead of rounded integers
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-Thank you for contributing to the Zeus Project! 
+Thank you for contributing to the Zeus Project!
