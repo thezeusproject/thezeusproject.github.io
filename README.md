@@ -1,5 +1,7 @@
 # Zeus Project
 
+**LOOKING FOR MAINTAINERS - PLEASE REACH OUT TO cneuralnets@gmail.com**
+
 Welcome to the Zeus Project! This repository is a collection of educational posts and associated projects related to various topics in machine learning and data science. We aim to provide clear theoretical explanations along with hands-on projects to solidify understanding.
 
 We welcome contributions from the community! If you have a topic you'd like to write about, please follow the steps below.
